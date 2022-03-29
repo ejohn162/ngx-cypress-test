@@ -174,7 +174,7 @@ describe('Our first suite',() => {
 
     })
 
-    it.only('check boxes',()=>{
+    it('check boxes',()=>{
         cy.visit('/')
         cy.contains('Modal & Overlays').click()
         cy.contains('Toastr').click()
@@ -183,10 +183,47 @@ describe('Our first suite',() => {
         cy.get('[type="checkbox"]').eq(0).click({force:true})
         cy.get('[type="checkbox"]').eq(2).click({force:true})
 
+    })
+
+    it.only('lists and dropdowns', ()=>{
+        cy.visit('/')
+
+        cy.get('.select-button > nb-icon > svg > [data-name="Layer 2"] > g > rect').click()
+        cy.get('[ng-reflect-value="dark"]').contains('Dark').click()
+        cy.get('.select-button').click()
+        cy.get('[ng-reflect-value="cosmic"]').contains('Cosmic').click()
+        cy.get('.select-button').click()
+        cy.get('[ng-reflect-value="corporate"]').contains('Corporate').click()
+        cy.get('.select-button').click()
+        cy.get('[ng-reflect-value="default"]').click()
 
 
 
 
+        // cy.get('[ng-reflect-value="default"]').contains('Light').click()
+
+        // cy.get('nav nb-select').then(dropdown =>{
+        //     cy.wrap(dropdown).click()
+        //     cy.get('.select-button').each(listItem=>{
+        //        const itemText=listItem.text().trim()
+
+        //        const colors = {
+        //            "light": "rgb(255, 255, 255)",
+        //            "Dark": "rgb(34, 43, 69)",
+        //            "Cosmic": "rgb(50, 50, 89)",
+        //            "Corporate": "rgb(255, 255, 255)"
+        //        }
+
+        //        cy.wrap(listItem).click()
+        //        cy.wrap(dropdown).should('contain', itemText)
+        //        cy.get('.select-button').should('have css', 'background-color', colors[itemText])
+        //     })   
+        
+        // })
+
+
+
+        
     })
 
 })
